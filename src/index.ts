@@ -138,7 +138,7 @@ export default {
           const item: any = {
             url: get(page, "public_url"),
             date: new Date(get(page, "created_time")),
-            title: get(page, "properties.title[0][0]") || "无标题",
+            title: get(page, "properties.标题.title[0][0]") || "无标题",
             author: env.N2R_AUTHOR,
             lastEditedTime: lastEditedTime.toISOString(),
           };
