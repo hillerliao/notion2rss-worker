@@ -138,7 +138,7 @@ export default {
 
           // 获取标题（兼容多段文字）
           const titleArray = page.properties["标题"]?.title || [];
-          const titleText = titleArray.map((t: any) => t.plain_text).join("") || "无标题";
+          const titleText = titleArray[0].map((t: any) => t.plain_text).join("") || "无标题";
           
           const item: any = {
             url: get(page, "public_url"),
