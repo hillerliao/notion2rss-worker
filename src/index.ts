@@ -135,13 +135,19 @@ export default {
           feed.item(cachedData);
           continue;
         } else {
+
+          // 获取标题（兼容多段文字）
+          const titleArray = page.properties["标题"]?.title || [];
+          const titleText = titleArray.map((t: any) => t.plain_text).join("") || "无标题";
+          
           const item: any = {
             url: get(page, "public_url"),
             date: new Date(get(page, "created_time")),
-            title: get(page, "properties.title.title[0].plain_text") || "无标题",
+            title: titleText,
             author: env.N2R_AUTHOR,
             lastEditedTime: lastEditedTime.toISOString(),
           };
+          
 
           const html = await getContentHtml(pageId, n2m);
           if (html) {
